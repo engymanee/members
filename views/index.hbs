@@ -1,0 +1,117 @@
+<div class="container mb-5">
+
+  {{#if user}}
+    <div class="is-flex my-5">
+      <a href="/new-message" class="button is-dark is-size-5">
+        <span>Add a new message</span>
+        <span class="icon is-small">
+          <i class="fas fa-comment-medical"></i>
+        </span>
+      </a>
+    </div>
+  {{/if}}
+
+  {{#each alerts}}
+    <div class="columns is-desktop">
+      <div class="column is-half is-offset-one-quarter">
+        <div class="notification is-primary is-light">
+          <p class="has-text-centered">{{this}}</p>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+
+  {{#each messages}}
+    <div class="box grow has-background-black my-6">
+      <article class="media">
+        <div class="media-left is-flex is-flex-direction-column is-align-items-center">
+          <figure class="image is-64x64">
+            <img src="/public/images/{{this.created_by.membership_status}}.png">
+          </figure>
+          <span class="tag is-dark mt-3">{{this.created_by.membership_status}}</span>
+        </div>
+        <div class="media-content has-text-grey-light">
+          <div class="content">
+            <strong>{{this.created_by.first_name}} {{this.created_by.last_name}}</strong> 
+            <small>@{{this.created_by.username}}</small>
+            <small class="has-text-grey">{{timeDifference this.timestamp}}</small>
+            {{#if this.pinned}}
+            <div class="tag ml-2">
+              <span class="icon">
+                <i class="fas fa-thumbtack"></i>
+              </span>
+              <span>Pinned</span>
+            </div>
+            {{/if}}
+            <br>
+            <strong class="subtitle has-text-grey-light">{{unescapeText this.title}}</strong>
+            <br>
+            {{#if ../user}}
+              <p style="white-space: pre-line" class="has-background-black my-4 ml-4">{{unescapeText this.body}}</p>
+            {{else}}
+              <p style="white-space: pre-line" class="has-background-black my-4 ml-4">Hidden text. Become a member to view it.</p>
+            {{/if}}
+          </div>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <div class="level-item">
+                <small>{{timeFormatter this.timestamp}}</small>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="media-right">
+
+          {{#if_eq ../user.membership_status 'admin'}}
+            <a href="/delete-message/{{this._id}}" class="button is-fullwidth is-dark is-size-7">
+              <span class="icon">
+                <i class="far fa-trash-alt"></i>
+              </span>
+              <span>Delete</span>
+            </a>
+            {{#if_eq ../user.username this.created_by.username}}
+              <a href="/edit-message/{{this._id}}" class="button mt-1 is-fullwidth is-dark is-size-7">
+                <span class="icon">
+                  <i class="far fa-edit"></i>
+                </span>
+                <span>Edit</span>
+              </a>
+            {{/if_eq}}
+            <form action="/pin-message/" method="POST">
+              <input name="messageid" value="{{this._id}}" hidden>
+              {{#if this.pinned}}
+                <button class="button is-fullwidth has-icon mt-1 is-light is-size-7">
+                  <span class="icon">
+                    <i class="fas fa-thumbtack"></i>
+                  </span>
+                  <span>Unpin</span>
+                </button>
+              {{else}}
+                <button class="button is-fullwidth has-icon mt-1 is-dark is-size-7">
+                  <span class="icon">
+                    <i class="fas fa-thumbtack"></i>
+                  </span>
+                  <span>Pin</span>
+                </button>
+              {{/if}}
+            </form>
+          {{/if_eq}}
+
+          {{#if_eq ../user.membership_status 'member'}}
+            {{#if_eq ../user.username this.created_by.username}}
+              <a href="/edit-message/{{this._id}}" class="button mt-1 is-fullwidth is-dark is-size-7">
+                <span class="icon">
+                  <i class="far fa-edit"></i>
+                </span>
+                <span>Edit</span>
+              </a>
+            {{/if_eq}}
+          {{/if_eq}}
+
+        </div>
+      </article>
+    </div>
+  {{/each}}
+  
+</div>

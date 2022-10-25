@@ -1,0 +1,19 @@
+.column {
+  margin: 0;
+}
+
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.1);
+}
+
+.border-top {
+  border-top: 1px solid #1f1f1f;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #1f1f1f;
+}

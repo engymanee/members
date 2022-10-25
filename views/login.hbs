@@ -1,0 +1,46 @@
+<div class="section">
+{{#if user}}
+  <p class="subtitle has-text-centered">You are already logged in</p>
+
+  {{else}}
+  <div class="columns is-desktop">
+    <div class="column is-half is-offset-one-quarter">
+      <form action="" method="POST">
+        <div class="field">
+          <label class="label has-text-grey-dark">Username</label>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input has-background-black has-text-white" name="username" type="text" placeholder="Username" value="{{username}}">
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label has-text-grey-dark">Password</label>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input has-background-black has-text-white" name="password" type="password" placeholder="Password">
+            <span class="icon is-small is-left">
+              <i class="fas fa-key"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field is-grouped is-grouped-centered my-5">
+          <p class="control">
+            <button class="button is-dark">
+              Submit
+            </button>
+          </p>
+          <p class="control">
+            <a href="/" class="button is-light">
+              Cancel
+            </a>
+          </p>
+        </div>
+      </form>
+      <p class="subtitle has-text-danger">{{error}}</p>
+    </div>
+  </div>
+{{/if}}
+</div>

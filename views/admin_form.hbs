@@ -1,0 +1,66 @@
+<section class="section">
+  <div class="container">
+    <h2 class="title has-text-centered has-text-grey">Answer all problems correctly to become an admin.</h2>
+    <form action="" method="POST">
+      <input type="text" name="userid" value="{{user._id}}" hidden>
+      <div class="columns is-desktop mt-5">
+        <div class="column is-half is-offset-one-quarter">
+
+          <div class="box">
+            <code>function sayHello() {</code><br>
+            <code>console.log("hello");</code><br>
+            <code>}</code><br><br>
+            <code>console.log(sayHello.prototype);</code>
+          </div>
+
+          <div class="field">
+            <label class="label has-text-grey">1- What will this code log in the console?</label>
+            <p class="control has-icons-left has-icons-right">
+              <input class="input has-background-black has-text-white" name="solution-1" type="text" placeholder="Solution" value="{{unescapeText solution1}}">
+              <span class="icon is-small is-left">
+                <i class="fab fa-js-square"></i>
+              </span>
+            </p>
+          </div>
+
+          <hr>
+
+          <div class="box">
+            <code>const x = 6 % 2;</code><br>
+            <code>const y = x ? 'One': 'Two';</code>
+          </div>
+
+          <div class="field">
+            <label class="label has-text-grey">2- What will the value of y be in this code?</label>
+            <p class="control has-icons-left has-icons-right">
+              <input class="input has-background-black has-text-white" name="solution-2" type="text" placeholder="Solution" value="{{unescapeText solution2}}">
+              <span class="icon is-small is-left">
+                <i class="fab fa-js-square"></i>
+              </span>
+            </p>
+          </div>
+
+          {{#each errors}}
+            <ul>
+              <li class="subtitle has-text-danger mt-2">{{this.msg}}</li>
+            </ul>  
+          {{/each}}
+
+          <div class="field is-grouped is-grouped-centered my-5">
+            <p class="control">
+              <button class="button is-dark">
+                Submit
+              </button>
+            </p>
+            <p class="control">
+              <a href="/" class="button is-light">
+                Cancel
+              </a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

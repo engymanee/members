@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="title has-text-centered">
+    Deleting message
+  </h2>
+  <div class="box has-background-black">
+    <article class="media">
+      <div class="media-left is-flex is-flex-direction-column is-align-items-center">
+        <figure class="image is-64x64">
+          <img src="/public/images/{{message.created_by.membership_status}}.png">
+        </figure>
+        <span class="tag is-dark mt-3">{{message.created_by.membership_status}}</span>
+      </div>
+      <div class="media-content has-text-grey-light">
+        <div class="content">
+          <strong>{{message.created_by.first_name}} {{message.created_by.last_name}}</strong> <small>@{{message.created_by.username}}</small>
+          <small>{{timeDifference message.timestamp}}</small>
+          <br>
+          <strong class="has-text-grey-light subtitle">{{unescapeText message.title}}</strong>
+          <br>
+          <p style="white-space: pre-line">{{unescapeText message.body}}</p>
+        </div>
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <div class="level-item">
+              <small>{{timeFormatter message.timestamp}}</small>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </article>
+  </div>
+
+  <form action="" method="POST">
+    <input type="text" name="messageid" value="{{message._id}}" hidden>
+    <label class="label">You want to delete this message?</label>
+    <button class="button is-danger">Yes, delete it</button>
+    <a href="/" class="button">Go back</a>
+  </form>
+</div>

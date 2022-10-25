@@ -1,0 +1,43 @@
+<section class="section">
+  <div class="columns is-desktop">
+    <div class="column is-half is-offset-one-quarter">
+      <h2 class="subtitle" >{{title}}</h2>
+      <form action="" method="POST">
+        <input hidden type="text" name="created_by" value="{{message.created_by}}">
+        <article class="media">
+          <div class="media-content">
+            <div class="field">
+              <div class="field-body">
+                <div class="field">
+                  <p class="control">
+                    <input class="input" name="title" type="text" placeholder="Title" value="{{unescapeText message.title}}" required>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <p class="control">
+                <textarea class="textarea" name="body" placeholder="Add a your message..." required>{{unescapeText message.body}}</textarea>
+              </p>
+            </div>
+            <nav class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <div class="buttons">
+                    <button class="button is-dark">Submit</button>
+                    <a href="/" class="button is-light">Go back</a>
+                  </div>
+                </div>            
+              </div>
+            </nav>
+          </div>
+        </article>
+      </form>
+      {{#each errors}}
+        <ul>
+          <li class="subtitle has-text-danger mt-2">{{this.msg}}</li>
+        </ul>  
+      {{/each}}
+    </div>
+  </div>
+</section>

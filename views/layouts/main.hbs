@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="has-background-black-bis has-navbar-fixed-bottom">
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Members Only</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="/public/stylesheets/main.css">
+  <script src="https://kit.fontawesome.com/6235567def.js" crossorigin="anonymous"></script>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body class="has-background-black-bis">
+
+  <nav class="navbar border-bottom is-black py-2 mb-5" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a id="title-container" href='/' class="icon-text link">
+          <span id="title" class="title has-text-white">Members Only</span>
+          <span id="icon-container" class="icon has-text-white">
+            <i id="icon" class="fas fa-user-secret fa-lg "></i>
+          </span>
+        </a>
+      </div>
+      <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu has-background-black" id="navMenu">
+      <div class="navbar-end">
+        {{#if user}}
+          <div class="navbar-item">
+            <span>Status: {{user.membership_status}}</span>
+          </div>
+          <div class="navbar-item">
+            {{#if_eq user.membership_status 'viewer'}}
+              <a href="/become_member" class="button is-black">
+                <span class="icon">
+                  <i class="fas fa-user-check"></i>
+                </span>
+                <strong>Become a member</strong>
+              </a>
+            {{/if_eq}}
+
+            {{#if_eq user.membership_status 'member'}}
+              <a href="/become_admin" class="button is-black">
+                <span class="icon">
+                  <i class="fas fa-user-shield"></i>
+                </span>
+                <strong>Become an admin</strong>
+              </a>
+            {{/if_eq}}
+            
+            <a href="/logout" class="button is-black">
+              <span class="icon">
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+              <strong>Logout</strong>
+            </a>
+          </div>
+        {{else}}
+          <div class="navbar-item">
+            <div class="buttons">
+              <a href="/signup" class="button is-black">
+                <span class="icon">
+                  <i class="fas fa-user-plus"></i>
+                </span>
+                <strong>Sign up</strong>
+              </a>
+              <a href="/login" class="button is-black">
+                <span class="icon">
+                  <i class="fas fa-sign-in-alt"></i>
+                </span>
+                <strong>Log in</strong>
+              </a>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </nav>
+    
+  {{{body}}}
+
+  <footer class="border-top navbar is-black is-fixed-bottom">
+    <div class="navbar-menu is-active has-background-black">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/daxas-boop" target="_blank">
+          Created by daxas-boop
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/public/js/navbar.js"></script>
+</body>
+</html>

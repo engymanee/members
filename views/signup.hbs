@@ -1,0 +1,77 @@
+<div class="section">
+  <div class="columns is-desktop">
+    <div class="column is-half is-offset-one-quarter">
+      <form action="" method="POST">
+        
+        <div class="field">
+          <label class="label has-text-grey-dark">First name</label>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input has-background-black has-text-white" name="firstname" type="text" placeholder="First name" value="{{firstname}}">
+            <span class="icon is-small is-left">
+              <i class="fas fa-signature"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label has-text-grey-dark">Last name</label>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input has-background-black has-text-white" name="lastname" type="text" placeholder="Last name" value="{{lastname}}">
+            <span class="icon is-small is-left">
+              <i class="fas fa-signature"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label has-text-grey-dark">Username</label>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input has-background-black has-text-white" name="username" type="text" placeholder="Username" value="{{username}}">
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label has-text-grey-dark">Password</label>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input has-background-black has-text-white" name="password" type="password" placeholder="Password">
+            <span class="icon is-small is-left">
+              <i class="fas fa-key"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="label has-text-grey-dark">Confirm password</label>
+          <p class="control  has-icons-left has-icons-right">
+            <input class="input has-background-black has-text-white" name="confirm-password" type="password" placeholder="Confirm password">
+            <span class="icon is-small is-left">
+              <i class="fas fa-key"></i>
+            </span>
+          </p>
+        </div>
+
+        {{#each errors}}
+          <ul>
+            <li class="subtitle has-text-danger mt-2">{{this.msg}}</li>
+          </ul>  
+        {{/each}}
+        
+        <div class="field is-grouped is-grouped-centered my-5">
+          <p class="control">
+            <button class="button is-dark">
+              Submit
+            </button>
+          </p>
+          <p class="control">
+            <a href="/" class="button is-light">
+              Cancel
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
