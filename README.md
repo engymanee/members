@@ -55,7 +55,6 @@ Cosmic JS: How to build a simple blog using Node .js
 https://www.cosmicjs.com/blog/how-to-build-a-simple-blog-using-nodejs 
 Coursera Back-end Developer course
 https://www.coursera.org/learn/introduction-to-back-end-development/home
-https://github.com/daxas-boop/members_only 
 
 ======================================================================================================================================================
 
